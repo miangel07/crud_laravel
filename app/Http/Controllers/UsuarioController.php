@@ -12,15 +12,15 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+       
              return view('usuario.registro');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function create(Request $request,)
     {
-        
+
+     
     }
 
     /**
@@ -28,7 +28,24 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    /*     return view('usuario.registro');
+        $this->validate($request,[
+            'nombre'=>'required',
+            'cedula'=>'numeric|requerid',
+            'telefono'=>'requerid',
+            'direccion'=>'requerid',
+        ]);
+
+        Usuario::create([
+            'nombre'=>$request->nombre,
+            'cedula'=>$request->cedula,
+            'telefono'=>$request->numero_telefono,
+            'direccion'=>$request->direccion
+        ]); 
+        return redirect()->router('usuario.registro');  */
+       $datosRegistro = request()->except('_token');
+      usuario::insert($datosRegistro); 
+        /*   return response()->json($datosRegistro);  */ 
     }
 
     /**
@@ -36,7 +53,8 @@ class UsuarioController extends Controller
      */
     public function show(usuario $usuario)
     {
-        
+        $datos['usuario']=usuario::paginate(5);
+        return view('usuario.index',$datos);
 
     }
 
@@ -59,8 +77,9 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(usuario $usuario)
+    public function destroy(usuario $id)
     {
-        //
+       $id->delete();
+         return redirect('/index'); 
     }
 }

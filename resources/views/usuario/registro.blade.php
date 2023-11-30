@@ -16,24 +16,25 @@
 </head>
 <body>
     <div class=" items-center justify-center flex">
-  <form action="">
+  <form action="{{url('/registro')}}" method="POST">
+    @csrf
     <div class="mb-5">
         <label class="mb-2 block uppercase text-gray-500 font-bold">nombre</label>
-        <input type="text" class="border p-3 w-full rounded-lg">
+        <input type="text" name="nombre" class="border p-3 w-full rounded-lg">
     </div>
     <div class="mb-5">
         <label class="mb-2 block uppercase text-gray-500 font-bold">cedula</label>
-        <input type="number" class="border p-3 w-full rounded-lg">
+        <input type="number" name="cedula" class="border p-3 w-full rounded-lg">
     </div>
     <div class="mb-5">
         <label class="mb-2 block uppercase text-gray-500 font-bold">numero de telefono</label>
-        <input type="text" class="border p-3 w-full rounded-lg">
+        <input type="text" name="telefono" class="border p-3 w-full rounded-lg">
     </div>
     <div class="mb-5">
         <label class="mb-2 block uppercase text-gray-500 font-bold">direccion</label>
-        <input type="text" class="border p-3 w-full rounded-lg">
+        <input type="text" name="direccion" class="border p-3 w-full rounded-lg">
     </div>
-    <input type="submit" value="registrar" class="flex bg-sky-600 hover:bg-sky-700 cursor-pointer font-bold w-f p-3 text-white">
+    <input type="submit" value="registrar"  class="flex bg-sky-600 hover:bg-sky-700 cursor-pointer font-bold w-f p-3 text-white">
   </form>
 </div>
 </body>
